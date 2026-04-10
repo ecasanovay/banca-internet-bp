@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="C4_Component_Complete_7_BP" name="Componentes 7 Servicios - BP">
+    <mxGraphModel dx="1106" dy="656" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" parent="1" style="swimlane;whiteSpace=wrap;html=1;dashed=1;fontStyle=1;startSize=30;fillColor=#f9f9f9;align=center;" value="Ecosistema de Banca por Internet - BP" vertex="1">
+          <mxGeometry height="920" width="1320" x="160" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="group_existing" parent="boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=25;fillColor=#eeeeee;" value="Servicios existentes (Core Reutilizado)" vertex="1">
+          <mxGeometry height="240" width="1260" x="30" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ms_clientes" parent="group_existing" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="MS Clientes&#xa;[Legacy Wrapper]&#xa;Gestión de datos base" vertex="1">
+          <mxGeometry height="80" width="180" x="150" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ms_movimientos" parent="group_existing" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="MS Movimientos&#xa;[Legacy Wrapper]&#xa;Histórico de transacciones" vertex="1">
+          <mxGeometry height="80" width="180" x="540" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ms_trans_legacy" parent="group_existing" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="MS Transferencias&#xa;[Core Component]&#xa;Ejecución contable" vertex="1">
+          <mxGeometry height="80" width="180" x="930" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-1" edge="1" parent="boundary" source="ms_perfil" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="ms_clientes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-3" connectable="0" parent="RDlcuSdhKSWFXev0ySDu-1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="HTTPS / REST + mTLS" vertex="1">
+          <mxGeometry relative="1" x="0.2707" as="geometry">
+            <mxPoint x="47" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-2" edge="1" parent="boundary" source="ms_perfil" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="ms_movimientos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-4" connectable="0" parent="RDlcuSdhKSWFXev0ySDu-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="HTTPS / REST + mTLS" vertex="1">
+          <mxGeometry relative="1" x="-0.1656" y="-6" as="geometry">
+            <mxPoint y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-5" parent="boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=25;fillColor=#eeeeee;" value="Servicios propuestos para creación" vertex="1">
+          <mxGeometry height="575" width="1260" x="30" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="ms_perfil" parent="RDlcuSdhKSWFXev0ySDu-5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" value="MS Perfil Consolidado [Propuesto]&#xa;[BFF / CQRS Read Model]&#xa;Agregador de Clientes + Movimientos" vertex="1">
+          <mxGeometry height="100" width="240" x="290" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="ms_auth" parent="RDlcuSdhKSWFXev0ySDu-5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" value="MS Autenticación [Propuesto]&#xa;[OAuth2 / OIDC + PKCE]&#xa;Gestión de Identidad y MFA" vertex="1">
+          <mxGeometry height="100" width="240" x="290" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-10" edge="1" parent="RDlcuSdhKSWFXev0ySDu-5" source="kafka" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ms_audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-11" connectable="0" parent="RDlcuSdhKSWFXev0ySDu-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Redis Protocol" vertex="1">
+          <mxGeometry relative="1" x="-0.3267" y="1" as="geometry">
+            <mxPoint x="-52" y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-12" edge="1" parent="RDlcuSdhKSWFXev0ySDu-5" source="kafka" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ms_notif">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-13" connectable="0" parent="RDlcuSdhKSWFXev0ySDu-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Async Event" vertex="1">
+          <mxGeometry relative="1" x="-0.3512" y="-5" as="geometry">
+            <mxPoint x="63" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kafka" parent="RDlcuSdhKSWFXev0ySDu-5" style="shape=module;align=center;spacingLeft=20;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;fontSize=14;" value="Bus de Eventos (Kafka): ADR-12" vertex="1">
+          <mxGeometry height="60" width="1220" x="20" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="ms_audit" parent="RDlcuSdhKSWFXev0ySDu-5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" value="MS Auditoría [Propuesto]&#xa;[Event Sourcing]&#xa;Trazabilidad Inmutable SIEM" vertex="1">
+          <mxGeometry height="100" width="220" x="220" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="ms_notif" parent="RDlcuSdhKSWFXev0ySDu-5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" value="MS Notificaciones [Propuesto]&#xa;[Event-Driven Dispatcher]&#xa;Push, SMS, Email" vertex="1">
+          <mxGeometry height="100" width="220" x="800" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="rel1" edge="1" parent="RDlcuSdhKSWFXev0ySDu-5" source="ms_auth" target="ms_perfil" value="Valida Acceso">
+          <mxGeometry relative="1" y="-50" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-14" edge="1" parent="boundary" source="ms_trans_legacy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="kafka">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-15" connectable="0" parent="RDlcuSdhKSWFXev0ySDu-14" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Async Event (Kafka / SNS)" vertex="1">
+          <mxGeometry relative="1" x="-0.2071" as="geometry">
+            <mxPoint x="-69" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RDlcuSdhKSWFXev0ySDu-16" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;DIAGRAMA DE COMPONENTES&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="50" width="1350" x="140" y="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
